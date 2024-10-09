@@ -1,0 +1,29 @@
+<app-sidebar></app-sidebar>
+<section class="header">
+    <div class="hero">
+        <div class="overlay">
+            <div class="container">
+                <h1>Bienvenido a Nuestro Proyecto</h1>
+                <p>Un lugar donde la ciencia y la información se encuentran.</p>
+                <a href="#!" class="btn btn-primary">Comenzar</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 p-0 bg-image-title d-flex">
+                <img [src]="imageDay.hdurl" class="img-fluid image-title-text w-100" alt="Imagen del día">
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center p-5">
+                <div>
+                    <h1>{{imageDay.title}}</h1>
+                    <h6 class="fst-italic text-secondary">{{imageDay.date}} | {{imageDay.copyright}}</h6>
+                    <p style="text-align: justify;">{{imageDay.explanation}}</p>
+                    <button class="btn btn-primary">Saber más</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

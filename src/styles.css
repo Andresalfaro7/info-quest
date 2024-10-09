@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'ubuntu-light';
+    src: url('./app/assets/fonts/ubuntu-light.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'ubuntu-medium';
+    src: url('./app/assets/fonts/ubuntu-medium.ttf') format('ttf');
+}
+
+p {
+    font-family: 'ubuntu-light', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+section{
+    background-color: rgb(237, 237, 237);
+}
+.button-menu{
+    top: 20px;
+    left: 20px;
+}
