@@ -1,9 +1,9 @@
 .header{
-    background-image: url('../../../assets/images/space-background.png');
+    background-image: url('../../../../assets/images/space-background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
+    background-attachment: fixed;
 }
 /* Estilos para el hero */
 .hero {
@@ -42,7 +42,14 @@
 }
 
 .bg-image-title{
-    background-image: url('../../../assets/images/space-bg.jpg');
+    background-image: url('../../../../assets/images/space-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg-image-asteroid{
+    background-image: url('../../../../assets/images/asteroids.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
