@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ApiNasaService } from '../../../services/api-nasa-home.service';
 import { CommonModule } from '@angular/common';
-import {AsteroidNear, ImageDay} from '../../../interfaces/interface.home.model';
+import {AsteroidNear, ImageDay, RoverGallery} from '../../../interfaces/interface.home.model';
 import { SidebarComponent } from '../../partials/sidebar/sidebar.component';
 
 @Component({
@@ -19,22 +19,36 @@ export class HomeComponent implements OnInit {
   errorMessage: string = '';
   imageDay: ImageDay;
   asteroidNear: AsteroidNear;
+  roverGallery: RoverGallery[] = [
+      {img_src: "/assets/images/rovers1.jpg"},
+      {img_src: "/assets/images/rovers2.jpg"},
+      {img_src: "/assets/images/rovers3.jpg"},
+      {img_src: "/assets/images/rovers4.jpg"},
+      {img_src: "/assets/images/rovers5.jpg"},
+  ]
+  apoloImages: string[];
 
-  constructor( private apiService: ApiNasaService ){ }
+  @ViewChild('videoBg') video!: ElementRef<HTMLVideoElement>;
+
+  constructor( private apiService: ApiNasaService ){  }
 
   ngOnInit(){
     this.getImageDay();
     this.getAsteroid();
+    this.getGallery();
+    this.getApoloImages();
+  }
+
+  ngAfterViewInit() {
+    this.videoBg();
   }
 
   async getImageDay(){
     try {
       const dataImage = await this.apiService.getImageDay();
       console.log('Image URL:', dataImage);
-      if(!dataImage.success){
-        throw new Error(dataImage.message);
-      }
-      this.imageDay = dataImage.data;
+      if(!dataImage.success) throw new Error(dataImage.message);
+      this.imageDay = dataImage.data as ImageDay;
     } catch (error) {
       console.error('Error al obtener la imagen:', error);
     }
@@ -44,15 +58,50 @@ export class HomeComponent implements OnInit {
     try {
       const dataAsteroid = await this.apiService.getAsteroid();
       console.log('Image URL:', dataAsteroid);
-      if(!dataAsteroid.success){
-        throw new Error(dataAsteroid.message);
-      }
-      if(dataAsteroid.data.near_earth_objects[this.today].length > 0){
-        this.asteroidNear = dataAsteroid.data.near_earth_objects[this.today][0];
-        console.log(dataAsteroid.data.near_earth_objects[this.today][0]);
+      if(!dataAsteroid.success) throw new Error(dataAsteroid.message);
+      if(Array.isArray(dataAsteroid.data) && dataAsteroid.data.length > 0){
+        this.asteroidNear = dataAsteroid.data[0] as AsteroidNear;
       }
     } catch (error) {
       console.error('Error al obtener la imagen:', error);
     }
   }
+
+  async getGallery(){
+    try {
+      const dataGallery = await this.apiService.getGalleryHeart();
+      console.log(dataGallery);
+      if(!dataGallery.success) throw new Error(dataGallery.message);
+      this.roverGallery = (dataGallery.data as RoverGallery[]).slice(-5);
+    } catch (error) {
+      console.log('Rover',this.roverGallery);
+      console.error('Error al obtener la imagen:', error);
+    }
+  }
+
+  async getApoloImages(){
+    try {
+      const dataApolo = await this.apiService.getApolo();
+      console.log(dataApolo);
+      if(!dataApolo.success) throw new Error(dataApolo.message);
+      if(Array.isArray(dataApolo.data)){
+        this.apoloImages = (dataApolo.data as string[]).slice(-50, -1);
+      }
+      console.log('Apolo',this.apoloImages);
+    } catch (error) {
+      console.log('Apolo',this.apoloImages);
+      console.error('Error al obtener la imagen:', error);
+    }
+  }
+
+  videoBg(){
+    const videoElement = this.video.nativeElement;
+    videoElement.muted = true;
+    videoElement.autoplay = true;
+    videoElement.loop = true;
+    videoElement.play().catch(error => {
+      console.error("No se pudo reproducir el video automáticamente:", error);
+    });
+  }
+
 }

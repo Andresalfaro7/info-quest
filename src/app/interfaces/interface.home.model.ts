@@ -14,4 +14,13 @@ export interface AsteroidNear {
     explanation:string;
     nasa_jpl_url: string;
 }
+
+export interface RoverGallery {
+    camera?: any;
+    earth_date?: string;
+    id?: number;
+    img_src:string;
+    rover?: any;
+    sol?: number
+}
   

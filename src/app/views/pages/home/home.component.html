@@ -1,6 +1,10 @@
 <app-sidebar></app-sidebar>
-<section class="header">
-    <div class="hero">
+<section class="position-relative overflow-hidden d-flex justify-content-center align-items-center vh-100">
+    <video class="w-100 h-100 position-relative bg-video top-0 left-0" poster="/assets/images/space-background.png"
+        #videoBg autoplay muted loop>
+        <source src="/assets/videos/banner_video.mp4" type="video/mp4">
+    </video>
+    <div class="hero2 position-absolute top-0 w-100 h-100">
         <div class="overlay">
             <div class="container">
                 <h1>Bienvenido a InfoQuest</h1>
@@ -14,16 +18,18 @@
 </section>
 <section>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 p-0 bg-image-title d-flex">
-                <img [src]="imageDay.hdurl" class="img-fluid image-title-text w-100" alt="Imagen del día">
+        <div class="row h-25">
+            <div class="col-md-6 p-0 bg-image-title d-flex h-700p">
+                <img [src]="imageDay.hdurl == null ? '/assets/images/space-bg.jpg' : imageDay.hdurl"
+                    class="img-fluid image-title-text w-100" alt="Imagen del día">
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-center p-5">
                 <div>
                     <h6 class="text-secondary">Imagen Astronómica del día</h6>
                     <div class="w-50 border border-1 border-primary"></div>
                     <h1>{{imageDay.title}}</h1>
-                    <h6 class="fst-italic text-secondary">{{imageDay.date | date }} | author: {{imageDay.copyright}}</h6>
+                    <h6 class="fst-italic text-secondary">{{imageDay.date | date }} | author: {{imageDay.copyright}}
+                    </h6>
                     <p style="text-align: justify;">{{imageDay.explanation}}</p>
                     <button class="button-primary-light text-decoration-none">Saber más</button>
                 </div>
@@ -39,12 +45,60 @@
                     <h6 class="text-secondary">Asteroides cercanos</h6>
                     <div class="w-50 border border-1 border-primary"></div>
                     <h1>{{asteroidNear.name}}</h1>
-                    <h6 class="fst-italic text-secondary">{{today | date }} | Potencialmente peligroso: {{asteroidNear.is_potentially_hazardous_asteroid ? 'Sí' : 'No'}}</h6>
-                    <p style="text-align: justify;">NeoWs (Near Earth Object Web Service) es un servicio web RESTful para obtener información sobre asteroides cercanos a la Tierra. Con NeoWs, un usuario puede: buscar asteroides en función de su fecha de aproximación más cercana a la Tierra, buscar un asteroide específico con su identificador de cuerpo pequeño del JPL de la NASA, así como explorar el conjunto de datos general.</p>
-                    <a class="a-primary-light text-decoration-none" href={{asteroidNear.nasa_jpl_url}} target="_blank" rel="noopener noreferrer">Más información</a>
+                    <h6 class="fst-italic text-secondary">{{today | date }} | Potencialmente peligroso:
+                        {{asteroidNear.is_potentially_hazardous_asteroid ? 'Sí' : 'No'}}</h6>
+                    <p style="text-align: justify;">NeoWs (Near Earth Object Web Service) es un servicio web RESTful
+                        para obtener información sobre asteroides cercanos a la Tierra. Con NeoWs, un usuario puede:
+                        buscar asteroides en función de su fecha de aproximación más cercana a la Tierra, buscar un
+                        asteroide específico con su identificador de cuerpo pequeño del JPL de la NASA, así como
+                        explorar el conjunto de datos general.</p>
+                    <a class="a-primary-light text-decoration-none" href={{asteroidNear.nasa_jpl_url}} target="_blank"
+                        rel="noopener noreferrer">Más información</a>
                 </div>
             </div>
             <div class="col-md-6 p-0 d-flex bg-image-asteroid">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="w-100 d-flex justify-content-center flex-wrap p-5">
+    <h1 class="w-100 text-center">Mars Rover Photos</h1>
+    <div class="w-50 border border-1 border-primary"></div>
+    <h6 class="w-100 text-secondary text-center">This API is designed to collect image data gathered by NASA's
+        Curiosity, Opportunity, and Spirit rovers on Mars and make it more easily available to other developers,
+        educators, and citizen scientists. This API is maintained by Chris Cerami.</h6>
+    <h6>Each rover has its own set of photos stored in the database, which can be queried separately. There are several
+        possible queries that can be made against the API. Photos are organized by the sol (Martian rotation or day) on
+        which they were taken, counting up from the rover's landing date. A photo taken on Curiosity's 1000th Martian
+        sol exploring Mars, for example, will have a sol attribute of 1000. If instead you prefer to search by the Earth
+        date on which a photo was taken, you can do that, too.</h6>
+</section>
+<section class="carrousel h-400p">
+    <section class="carrusel" *ngFor="let rover of roverGallery; let i = index">
+        <span class="carrusel" [style]="'--i:'+i"><img [src]="rover.img_src"></span>
+    </section>
+</section>
+<section class="w-100 d-flex justify-content-center flex-wrap p-5">
+    <h1 class="w-100 text-center">Apolo photos</h1>
+    <div class="w-50 border border-1 border-primary"></div>
+    <h6 class="w-100 text-secondary text-center">Nasa API</h6>
+</section>
+<section class="d-flex justify-content-start py-5 overflow-hidden">
+    <div class="carousel-line d-flex align-items-center">
+        <div class="px-4" *ngFor="let img of apoloImages; let i = index">
+            <img [src]="img" alt="Imagen del Apolo">
+        </div>
+    </div>
+</section>
+<section class="header">
+    <div class="hero">
+        <div class="overlay">
+            <div class="container">
+                <h1>Bienvenido a InfoQuest</h1>
+                <p>Un lugar donde la ciencia y la información se encuentran.</p>
+                <a href="#!" class="a-primary-dark text-decoration-none">
+                    Explorar
+                </a>
             </div>
         </div>
     </div>
