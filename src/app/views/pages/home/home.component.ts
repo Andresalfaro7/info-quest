@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
       console.log(dataApolo);
       if(!dataApolo.success) throw new Error(dataApolo.message);
       if(Array.isArray(dataApolo.data)){
-        this.apoloImages = (dataApolo.data as string[]).slice(-50, -1);
+        this.apoloImages = (dataApolo.data as string[]).slice(-70, -1);
       }
       console.log('Apolo',this.apoloImages);
     } catch (error) {

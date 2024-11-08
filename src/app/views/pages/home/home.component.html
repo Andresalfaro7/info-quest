@@ -19,9 +19,13 @@
 <section>
     <div class="container-fluid">
         <div class="row h-25">
-            <div class="col-md-6 p-0 bg-image-title d-flex h-700p">
-                <img [src]="imageDay.hdurl == null ? '/assets/images/space-bg.jpg' : imageDay.hdurl"
-                    class="img-fluid image-title-text w-100" alt="Imagen del día">
+            <div class="col-md-6 p-0 bg-image-title d-flex justify-content-center align-items-center h-700p">
+                <div class="photo-frame">
+                    <div class="photo-inner">
+                        <img [src]="imageDay.hdurl == null ? '/assets/images/space-bg.jpg' : imageDay.hdurl" class="img-fluid image-title-text w-100" alt="Imagen del día">
+                        <div class="description">{{imageDay.title}}</div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-center p-5">
                 <div>
