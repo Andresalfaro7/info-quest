@@ -42,23 +42,23 @@ export class BlogService {
   }
 
   // Add new appointment
-  addRegisterappointment(appointment: RegisterBlog): Observable<any> {
-    return this.firebaseServices.createBlog(appointment);
+  addRegisterBlog(blog: RegisterBlog): Observable<any> {
+    return this.firebaseServices.createBlog(blog);
   }
 
   // Update appointment by id
-  updateaAppointment(index: number, appointment: RegisterBlog) {
+  updateaBlog(index: number, blog: RegisterBlog) {
     let blogUpdate = this.blogs[index];
-    blogUpdate.title = appointment.title;
-    blogUpdate.subtitle = appointment.subtitle;
-    blogUpdate.author = appointment.author;
-    blogUpdate.article = appointment.article;
-    blogUpdate.today = appointment.today;
+    blogUpdate.title = blog.title;
+    blogUpdate.subtitle = blog.subtitle;
+    blogUpdate.author = blog.author;
+    blogUpdate.article = blog.article;
+    blogUpdate.today = blog.today;
   }
 
   // Update appointment
-  updateBlog(id: string, appointment: RegisterBlog): Observable<any> {
-    return this.firebaseServices.updateBlog(id, appointment);
+  updateBlog(id: string, blog: RegisterBlog): Observable<any> {
+    return this.firebaseServices.updateBlog(id, blog);
   }
 
   // Get appointment by id
@@ -67,7 +67,7 @@ export class BlogService {
   }
 
   // Delete appointment by id
-  deleteAppointmnet(id: string): Observable<any> {
+  deleteBlog(id: string): Observable<any> {
     const result = window.confirm('¿Estás seguro de que quieres continuar?');
     if (result) {
       console.log('El usuario confirmó la acción.');

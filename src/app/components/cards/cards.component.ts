@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RegisterBlog } from '../../interfaces/register-blog.model';
 import { BlogService } from '../../services/blog.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Modal } from 'bootstrap';
+import { EditBlogComponent } from '../modals/edit-blog/edit-blog.component';
 
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [CommonModule, RouterModule, ],
+  imports: [CommonModule, RouterModule, EditBlogComponent],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.css'
 })
@@ -16,6 +18,10 @@ export class CardsComponent {
   // show: string = "collapse";
   appointmentList: RegisterBlog;
   blogs: RegisterBlog[];
+  id: string;
+
+  @ViewChild('exampleModal') modalElement!: ElementRef; // Revisa el nombre 'exampleModal'
+  private modalInstance!: Modal;
 
   ngOnInit(): void {
     this.blogs = this.blogServices.blogs;
@@ -48,7 +54,7 @@ export class CardsComponent {
   }
 
   deleteBlog(id: string): void {
-    this.blogServices.deleteAppointmnet(id).subscribe({
+    this.blogServices.deleteBlog(id).subscribe({
       next: () => {
         console.log('Blog eliminado exitosamente');
         this.loadBlogs();
@@ -58,6 +64,8 @@ export class CardsComponent {
       }
     });
   }
+
+  @ViewChild(EditBlogComponent) modalComponent!: EditBlogComponent;
 
   calculateAge(birthDate: Date|string): number {
     // console.log(birthDate);

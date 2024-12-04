@@ -1,0 +1,47 @@
+<header>
+    <div id="carouselExampleSlidesOnly" style="height: 350px;" class="carousel slide overflow-hidden" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/assets/images/slide1.png" class="d-block w-100 object-fit-cover" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/images/slide2.png" class="d-block w-100 object-fit-cover" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/images/slide3.png" class="d-block w-100 object-fit-cover" alt="...">
+            </div>
+        </div>
+    </div>
+</header>
+<section class="container">
+    <form class="container py-5" (ngSubmit)="updateBlog()">
+        <h1 class="text-center">Editar Blog</h1>
+        <section class="container">
+            <div class="container py-5">
+                <div class="form-row">
+                    <div class="form-group col-md-12 mb-2">
+                        <label for="inputTitle">Titulo</label>
+                        <input type="text" class="form-control" id="inputTitle" name="inputTitle"
+                            [(ngModel)]="inputTitle">
+                    </div>
+                    <div class="form-group col-md-12 mb-2">
+                        <label for="inputSubtitle">Subtitulo</label>
+                        <input type="text" class="form-control" id="inputSubtitle" name="inputSubtitle"
+                            [(ngModel)]="inputSubtitle">
+                    </div>
+                    <div class="form-group col-md-12 mb-2">
+                        <label for="inputAuthor">Autor</label>
+                        <input type="text" class="form-control" id="inputAuthor" name="inputAuthor"
+                            [(ngModel)]="inputAuthor">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputArticle">Árticulo</label>
+                    <textarea class="form-control" id="inputArticle" name="inputArticle"
+                        [(ngModel)]="inputArticle" rows="10"></textarea>
+                </div>
+            </div>
+        </section>
+        <button type="submit" class="btn btn-outline-primary">Actualizar</button>
+    </form>
+</section>
