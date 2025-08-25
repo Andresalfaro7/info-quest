@@ -1,0 +1,59 @@
+<button type="button" class="a-primary-dark text-decoration-none text-black" (click)="openModal()" style="background-color: rgba(237, 237, 237, 1);">Nuevo Blog</button>
+
+<div #exampleModal class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Blog</h5>
+                <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <section class="container">
+                        <div class="container py-5">
+                            <div class="form-row">
+                                <div class="form-group col-md-12 mb-2">
+                                    <label for="inputTitle">Titulo</label>
+                                    <input type="text" class="form-control" id="inputTitle" name="inputTitle"
+                                        [(ngModel)]="inputTitle">
+                                </div>
+                                <div class="form-group col-md-12 mb-2">
+                                    <label for="inputLastnames">Subtitulo</label>
+                                    <input type="text" class="form-control" id="inputLastnames" name="inputLastnames"
+                                        [(ngModel)]="inputSubtitle">
+                                </div>
+                                <div class="form-group col-md-12 mb-2">
+                                    <label for="inputAuthor">Autor</label>
+                                    <input type="text" class="form-control" id="inputAuthor" name="inputAuthor"
+                                        [(ngModel)]="inputAuthor">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputArticle">Árticulo</label>
+                                <textarea class="form-control" id="inputArticle" name="inputArticle"
+                                    [(ngModel)]="inputArticle" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="closeModal()">
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="saveBlog()">
+                        Publicar
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                            <g fill="none" stroke-width="4">
+                                <path fill="#2f88ff" stroke="#000" stroke-linejoin="round"
+                                    d="M39.3 6H8.7C7.20883 6 6 7.20883 6 8.7V39.3C6 40.7912 7.20883 42 8.7 42H39.3C40.7912 42 42 40.7912 42 39.3V8.7C42 7.20883 40.7912 6 39.3 6Z" />
+                                <path fill="#43ccf8" stroke="#fff" stroke-linejoin="round" d="M32 6V24H15V6H32Z" />
+                                <path stroke="#fff" stroke-linecap="round" d="M26 13V17" />
+                                <path stroke="#000" stroke-linecap="round" d="M10.9971 6H35.9986" />
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

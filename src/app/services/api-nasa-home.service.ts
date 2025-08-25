@@ -13,7 +13,15 @@ export class ApiNasaService {
   asteroidNear: dataResponse;
   apoloData: dataResponse;
 
-  constructor() { }
+  constructor() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    this.today = `${year}-${month}-${day}`;
+
+    console.log(this.today);
+  }
 
   async getImageDay(): Promise<dataResponse> {
     try {
@@ -45,10 +53,12 @@ export class ApiNasaService {
       );
       if (!response.ok) throw new Error('Error en la solicitud a la API de la NASA');
       let data = await response.json();
+      console.log(data);
+      console.log(data.near_earth_objects[this.today]);
       this.asteroidNear = {
         success: true,
         message: "Información de asteroides cercanos exitosa",
-        data: data.near_earth_objects[this.today]
+        data: data.near_earth_objects[this.today][0]
       }
       return this.asteroidNear;
     } catch (error) {

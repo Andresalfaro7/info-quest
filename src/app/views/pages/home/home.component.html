@@ -1,4 +1,4 @@
-<app-sidebar></app-sidebar>
+
 <section class="position-relative overflow-hidden d-flex justify-content-center align-items-center vh-100">
     <video class="w-100 h-100 position-relative bg-video top-0 left-0" poster="/assets/images/space-background.png"
         #videoBg autoplay muted loop>
@@ -9,7 +9,7 @@
             <div class="container">
                 <h1>Bienvenido a InfoQuest</h1>
                 <p>Un lugar donde la ciencia y la información se encuentran.</p>
-                <a href="#!" class="a-primary-dark text-decoration-none">
+                <a href="/blog" class="a-primary-dark text-decoration-none">
                     Explorar
                 </a>
             </div>
@@ -21,9 +21,9 @@
         <div class="row h-25">
             <div class="col-md-6 p-0 bg-image-title d-flex justify-content-center align-items-center h-700p">
                 <div class="photo-frame">
-                    <div class="photo-inner">
-                        <img [src]="imageDay.hdurl == null ? '/assets/images/space-bg.jpg' : imageDay.hdurl" class="img-fluid image-title-text w-100" alt="Imagen del día">
-                        <div class="description">{{imageDay.title}}</div>
+                    <div class="photo-inner" style="height: 350px;">
+                        <img [src]="imageDay.hdurl == null ? '/assets/images/space-bg.jpg' : imageDay.hdurl" class="img-fluid image-title-text w-100" style="width: 100%; height: 100%; object-fit: cover;" alt="Imagen del día">
+                        <div class="description bg-title-dark mt-5">{{imageDay.title}}</div>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
             <div class="container">
                 <h1>Bienvenido a InfoQuest</h1>
                 <p>Un lugar donde la ciencia y la información se encuentran.</p>
-                <a href="#!" class="a-primary-dark text-decoration-none">
+                <a href="/blog" class="a-primary-dark text-decoration-none">
                     Explorar
                 </a>
             </div>
