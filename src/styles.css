@@ -97,3 +97,9 @@ body::-webkit-scrollbar-thumb
         font-size: 3rem !important;
     }
 }
+
+.bg-title-dark{
+    background-color: rgba(0, 0, 0, 0.252);
+    color: #ffffff;
+    padding: 1rem 2rem;
+}

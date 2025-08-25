@@ -57,10 +57,12 @@ export class HomeComponent implements OnInit {
   async getAsteroid(){
     try {
       const dataAsteroid = await this.apiService.getAsteroid();
-      console.log('Image URL:', dataAsteroid);
+      console.log('Image URL Asteroid:', dataAsteroid);
       if(!dataAsteroid.success) throw new Error(dataAsteroid.message);
       if(Array.isArray(dataAsteroid.data) && dataAsteroid.data.length > 0){
         this.asteroidNear = dataAsteroid.data[0] as AsteroidNear;
+      } else {
+        this.asteroidNear = dataAsteroid.data as unknown as AsteroidNear;
       }
     } catch (error) {
       console.error('Error al obtener la imagen:', error);

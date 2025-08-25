@@ -71,9 +71,9 @@ export class RegisterBlogComponent implements AfterViewInit {
     }
     this.blogServices.addRegisterBlog(blog).subscribe({
       next: () => {
-        console.log('Cita creada exitosamente');
+        console.log('Blog creado exitosamente');
         this.blogServices.loadBlogs();
-        alert('Cita registrada a nombre de: '+this.inputSubtitle);
+        alert('Blog registrado con titulo : '+this.inputTitle);
         this.inputTitle= "";
         this.inputSubtitle= "";
         this.inputAuthor= "";
@@ -89,6 +89,6 @@ export class RegisterBlogComponent implements AfterViewInit {
   }
 
   backToHome() {
-    this.router.navigate(['']);
+    this.router.navigate(['/blog']);
   }
 }

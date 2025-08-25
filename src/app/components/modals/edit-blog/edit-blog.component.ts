@@ -109,6 +109,6 @@ export class EditBlogComponent implements OnInit {
   }
 
   backToHome() {
-    this.router.navigate(['']);
+    this.router.navigate(['/blog']);
   }
 }
